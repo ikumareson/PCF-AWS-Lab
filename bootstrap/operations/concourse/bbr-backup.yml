@@ -1,0 +1,58 @@
+- type: replace
+  path: /releases/name=backup-and-restore-sdk?
+  value:
+    name: "backup-and-restore-sdk"
+    version: "1.9.0"
+    url: "https://bosh.io/d/github.com/cloudfoundry-incubator/backup-and-restore-sdk-release?v=1.9.0"
+    sha1: "2f8f805d5e58f72028394af8e750b2a51a432466"
+
+- type: replace
+  path: /instance_groups/name=db/jobs/-
+  value:
+    release: backup-and-restore-sdk
+    name: database-backup-restorer
+
+- type: replace
+  path: /instance_groups/name=db/jobs/-
+  value:
+    name: bbr-atcdb
+    release: concourse
+    properties:
+      postgresql:
+        database: atc
+        role:
+          name: concourse
+          password: ((postgres_password))
+
+- type: replace
+  path: /instance_groups/name=db/jobs/name=bbr-credhubdb?  
+  value:
+    name: bbr-credhubdb
+    release: credhub
+    properties:  
+      credhub:
+        data_storage:
+          type: postgres
+          port: 5432
+          username: credhub
+          password: ((credhub-db-password))
+          database: credhub
+          require_tls: false
+      release_level_backup: true    
+
+- type: replace
+  path: /instance_groups/name=db/jobs/name=bbr-uaadb?  
+  value:
+    name: bbr-uaadb
+    release: uaa
+    properties:
+      uaadb:
+        port: 5432
+        db_scheme: postgresql
+        databases:
+        - tag: uaa
+          name: uaa
+        roles:
+        - tag: admin
+          name: uaa
+          password: ((uaa_db_password))

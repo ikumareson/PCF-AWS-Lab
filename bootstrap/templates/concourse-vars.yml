@@ -1,0 +1,16 @@
+---
+network_name: default
+web_vm_type: concourse-web
+db_vm_type: concourse-db
+db_persistent_disk_type: 50GB
+worker_vm_type: concourse-worker
+deployment_name: concourse
+web_network_name: default
+web_network_vm_extension: lb
+web_instances: 3
+worker_instances: 3
+uaa_version: 60
+uaa_sha1: a7c14357ae484e89e547f4f207fb8de36d2b0966
+credhub_release_version: 1.9.3
+credhub_sha: 648658efdef2ff18a69914d958bcd7ebfa88027a
+atc_basic_auth.username: admin

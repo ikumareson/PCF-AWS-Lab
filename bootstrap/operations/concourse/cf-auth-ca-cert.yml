@@ -1,0 +1,3 @@
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/cf_auth?/ca_cert
+  value: ((opsman_ca_cert))

@@ -1,0 +1,11 @@
+---
+stemcell_version: 3586.48
+stemcell_sha: 66c60fd818eb568ec349d6faa06c1f394f054878
+xenial_stemcell_version: 97.22
+xenial_stemcell_sha: ee520cf2eb3ba8ac358c441deaa5f6112a06d7b8
+bbl_azure_region: ap-south-1
+bbl_env_name: in-test01
+concourse_a_record: ci
+prometheus_a_record: prometheus
+subdomain: test01.in
+parent_domain: hclcnlabs.com

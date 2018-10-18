@@ -1,0 +1,11 @@
+---
+stemcell_version: $STEMCELL_VERSION
+stemcell_sha: $STEMCELL_SHA
+xenial_stemcell_version: $XENIAL_STEMCELL_VERSION
+xenial_stemcell_sha: $XENIAL_STEMCELL_SHA
+bbl_azure_region: $REGION 
+bbl_env_name: $ENV_NAME
+concourse_a_record: $CONCOURSE_A_RECORD
+prometheus_a_record: $PROMETHEUS_A_RECORD
+subdomain: $SUBDOMAIN
+parent_domain: $PARENT_DOMAIN

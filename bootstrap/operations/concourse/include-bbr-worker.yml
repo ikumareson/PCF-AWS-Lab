@@ -1,0 +1,30 @@
+- type: replace
+  path: /instance_groups/-
+  value:
+    name: bbr-worker
+    instances: 1
+    azs: [z1]
+    networks: [{name: ((network_name))}]
+    stemcell: xenial
+    vm_type: bbr-concourse-worker
+    jobs:
+    - release: concourse
+      name: worker
+      consumes: {baggageclaim: {from: bbr-worker-baggageclaim}}
+      properties:
+        drain_timeout: 10m
+        tsa: {worker_key: ((worker_key))}
+        tags:
+        - bbr
+
+    - release: concourse
+      name: baggageclaim
+      properties: {log_level: debug}
+      provides: {baggageclaim: {as: bbr-worker-baggageclaim}}
+
+    - release: garden-runc
+      name: garden
+      properties:
+        garden:
+          listen_network: tcp
+          listen_address: 0.0.0.0:7777
