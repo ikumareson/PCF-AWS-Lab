@@ -10,7 +10,5 @@ bosh create-env \
   -o  ${BBL_STATE_DIR}/bosh-deployment/credhub.yml \
   -o  ${BBL_STATE_DIR}/add-bosh-exporter-uaa-clients.yml \
   -o  ${BBL_STATE_DIR}/add-bbr-backup.yml \
-  -v  subscription_id="${BBL_AZURE_SUBSCRIPTION_ID}" \
-  -v  client_id="${BBL_AZURE_CLIENT_ID}" \
-  -v  client_secret="${BBL_AZURE_CLIENT_SECRET}" \
-  -v  tenant_id="${BBL_AZURE_TENANT_ID}" 
+  -v  access_key_id="${BBL_AWS_ACCESS_KEY_ID}" \
+  -v  secret_access_key="${BBL_AWS_SECRET_ACCESS_KEY}" \

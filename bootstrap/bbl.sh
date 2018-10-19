@@ -52,7 +52,7 @@ if [ "$1" == "create" ]; then
     echo "prometheus_a_record=\"$prometheus_a_record.$subdomain\"" >> $BBL_STATE_DIRECTORY/vars/hcl.tfvars
     echo "subdomain=\"$subdomain\"" >> $BBL_STATE_DIRECTORY/vars/hcl.tfvars
     echo "parent_domain=\"$parent_domain\"" >> $BBL_STATE_DIRECTORY/vars/hcl.tfvars
-    echo "dns_resource_group_name=\"$dns_resource_group_name\"" >> $BBL_STATE_DIRECTORY/vars/hcl.tfvars
+    #echo "dns_resource_group_name=\"$dns_resource_group_name\"" >> $BBL_STATE_DIRECTORY/vars/hcl.tfvars
 
     # copy our create director override and additional ops files:
     cp $SCRIPTPATH/operations/bosh/*.yml $BBL_STATE_DIRECTORY
@@ -63,7 +63,7 @@ if [ "$1" == "create" ]; then
 
 elif [ "$1" == "down" ]; then
     echo "Deleting state from Azure bucket..."
-    $SCRIPTPATH/tools/bbl-state-sync-azure.sh delete
+    #$SCRIPTPATH/tools/bbl-state-sync-azure.sh delete
     bbl destroy --no-confirm
 else
     bbl $@
